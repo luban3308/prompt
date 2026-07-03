@@ -10,6 +10,22 @@
 
 > 以下为累积总库，每日提示词会同时归档到对应日期文件。
 
+## 📁 分类导航
+
+| 分类 | 说明 | 文件 |
+|------|------|------|
+| 💼 工作 | 效率、决策、沟通、项目管理、职业 | [categories/工作.md](categories/工作.md) |
+| ✍️ 写作 | 博客、文案、翻译、创意写作、技术文档 | [categories/写作.md](categories/写作.md) |
+| 📚 学习 | 费曼学习法、论文总结、闪卡、语言学习 | [categories/学习.md](categories/学习.md) |
+| 💻 编程 | 代码生成、调试、重构、测试、Docker | [categories/编程.md](categories/编程.md) |
+| 📈 营销 | 策略、SEO、广告、转化、品牌 | [categories/营销.md](categories/营销.md) |
+| 🏢 商业 | 商业模式、竞品分析、定价、财务 | [categories/商业.md](categories/商业.md) |
+| 🤖 Agent | 系统提示词、Multi-Agent、RAG、安全 | [categories/Agent.md](categories/Agent.md) |
+| 🎨 创意 | Midjourney、DALL-E、设计、可视化 | [categories/创意.md](categories/创意.md) |
+| 🏠 生活 | 健身、旅行、饮食、家居、约会 | [categories/生活.md](categories/生活.md) |
+
+---
+
 # 2026-07-03
 
 ## 1. ChatGPT 通用高产提示词

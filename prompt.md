@@ -154,3 +154,122 @@ Respond in a way that:
 ```
 > 来源：Promptitude — The Complete Guide to Prompt Engineering in 2026  
 > 用法：让 AI 基于对话历史自适应调整回复风格，适合长对话场景。
+
+---
+
+# 2026-07-03 (第二批)
+
+## 9. Claude XML 标签提示法
+
+**Prompt：**
+```
+<role>You are a [专业角色，如 senior data analyst]</role>
+
+<task>
+[具体任务描述，明确输出目标]
+</task>
+
+<rules>
+- [规则1：输出格式要求]
+- [规则2：内容边界]
+- [规则3：语气/风格]
+</rules>
+
+<context>
+[背景信息、数据、文档全文]
+</context>
+```
+> 来源：SurePrompts — 50 Best Claude Prompts in 2026
+> 用法：Claude 原生支持 XML 标签结构，用 `<role>` `<task>` `<rules>` `<context>` 包裹分段比纯文本稳定得多。每个标签都是一个明确的上下文边界，Claude 会严格遵循标签内的指令。
+
+---
+
+## 10. RACE 提示框架
+
+**Prompt：**
+```
+Act as a [ROLE — 角色定义].
+
+[ACTION — 具体要做的事]
+
+Here is the context: [CONTEXT — 背景信息]
+
+Here are examples: [EXAMPLES — 参考范例]
+
+Follow these rules:
+- [约束条件]
+- [输出格式要求]
+```
+> 来源：Nigape — AI Prompt Examples 2026
+> 用法：RACE = Role + Action + Context + Examples。记不住的模板就用这个四字口诀，涵盖提示词核心要素，适合快速搭建各种场景的 prompt。
+
+---
+
+## 11. 先计划后执行提示词（Plan-First）
+
+**Prompt：**
+```
+Task: [你的任务]
+
+Before writing any code (or output), do the following:
+1. Read through the requirements carefully
+2. Identify potential issues, edge cases, or ambiguities
+3. Create a step-by-step plan for how you will approach this
+4. Present the plan to me for approval
+
+Once I approve the plan, proceed with implementation.
+```
+> 来源：YouTube — How To Prompt Claude Code Better Than 99% (2026)
+> 用法：对复杂编码/写作任务，先让 AI 出方案，批准后再执行。避免 AI 一上来就写错方向，减少返工。Claude Code 的 Plan Mode 核心就是这个思路。
+
+---
+
+## 12. 图片生成结构化提示词（Midjourney / DALL-E）
+
+**Prompt：**
+```
+[主体描述], [场景/环境], [光线/色调], [构图/角度], [风格参考], [额外参数]
+
+Example:
+A photorealistic 3D collector figure of a man in flannel shirt and jeans, displayed on a wooden desk beside a large monitor, dramatic studio lighting, ultra-detailed fabric texture, Sideshow Collectibles quality, --ar 4:5 --v 7
+```
+> 来源：Medium — Complete List of Prompts & Styles for MidJourney 2026 Edition
+> 用法：图片生成提示词的固定配方：主体 → 场景 → 光线 → 构图 → 风格 → 参数。顺序影响权重，越靠前的词权重越高。--ar 控制宽高比，--v 指定模型版本。
+
+---
+
+## 13. 自我反思/自检提示词（Self-Check）
+
+**Prompt：**
+```
+[你的任务]
+
+After completing the task, review your own output and:
+1. Identify any potential errors or omissions
+2. Check if all constraints were satisfied
+3. Rate confidence in each part of the answer (low/medium/high)
+4. Suggest specific improvements if confidence is low
+5. Flag any assumptions you made that could affect accuracy
+```
+> 来源：IBM — 2026 Guide to Prompt Engineering
+> 用法：让 AI 对自己的输出进行二次检查，自动纠错。适合事实核查、数据分析、代码生成等对准确性要求高的场景。
+
+---
+
+## 14. Meta-Prompting — 让 AI 帮你写提示词
+
+**Prompt：**
+```
+You are an expert prompt engineer. I need a prompt for the following task:
+
+Task description: [你想让 AI 做什么]
+Target AI model: [ChatGPT / Claude / Gemini]
+Desired output format: [格式要求]
+Key constraints: [约束条件]
+
+Generate a complete, ready-to-use prompt that I can copy and paste.
+The prompt should include role, task, format, constraints, and examples.
+Explain why each part is structured this way.
+```
+> 来源：Artificial Corner / Promptitude — Prompt Engineering Guide 2026
+> 用法：不会写 prompt？让 AI 帮你写。描述你的需求，它生成结构化的完整 prompt，还会解释为什么这么写。适合新手快速上手，也适合老手获取灵感。

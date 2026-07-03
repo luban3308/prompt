@@ -3,7 +3,7 @@
 共 8 个提示词，每日更新归档。
 
 ---
-## 86. AI Agent 系统提示词编写
+## 1. AI Agent 系统提示词编写
 
 **Prompt：**
 ```
@@ -32,7 +32,7 @@ Use clear XML or markdown structure.
 ---
 
 ---
-## 87. Multi-Agent 任务编排
+## 2. Multi-Agent 任务编排
 
 **Prompt：**
 ```
@@ -59,7 +59,7 @@ Use a team pipeline: plan → spec → exec → verify → fix.
 ---
 
 ---
-## 88. 自改进 Agent 设计
+## 3. 自改进 Agent 设计
 
 **Prompt：**
 ```
@@ -86,7 +86,7 @@ Include the reflection loop: act → observe → reflect → adjust.
 ---
 
 ---
-## 89. MCP 工具定义提示词
+## 4. MCP 工具定义提示词
 
 **Prompt：**
 ```
@@ -115,7 +115,7 @@ Include usage examples showing when this tool should be invoked.
 ---
 
 ---
-## 90. Prompt 注入防御提示词
+## 5. Prompt 注入防御提示词
 
 **Prompt：**
 ```
@@ -143,7 +143,7 @@ The guardrails should:
 ---
 
 ---
-## 91. 温度与参数调优指令
+## 6. 温度与参数调优指令
 
 **Prompt：**
 ```
@@ -171,7 +171,7 @@ Provide recommended ranges for A/B testing.
 ---
 
 ---
-## 92. RAG 系统查询优化
+## 7. RAG 系统查询优化
 
 **Prompt：**
 ```
@@ -199,7 +199,7 @@ Explain why each change improves retrieval quality.
 ---
 
 ---
-## 108. System Prompt 编写 — 角色专家
+## 8. System Prompt 编写 — 角色专家
 
 **Prompt：**
 ```

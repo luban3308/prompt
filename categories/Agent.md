@@ -225,4 +225,28 @@ Stay in character throughout the conversation.
 
 ---
 
+# 2026-07-05
+
+## 9. AI 模型输出一致性检查
+> 📅 2026-07-05
+
+**Prompt：**
+```
+Evaluate this AI-generated output for consistency and accuracy: [粘贴 AI 输出]. Context: [任务背景]. Check for: (1) factual accuracy — are there any claims that seem wrong?, (2) internal consistency — does the logic hold throughout?, (3) completeness — were all parts of the request addressed?, (4) formatting compliance — does it follow the requested format?, (5) hallucination risk — flag any claims that sound fabricated. Rate overall quality 1-10.
+```
+> 来源：IBM / Lakera.ai — Prompt Engineering Guide (2026)
+> 用法：AI 输出质量检查，降低幻觉风险，适合生产环境使用前验证。
+
+---
+
+## 10. AI 生成内容的事实核查
+> 📅 2026-07-05
+
+**Prompt：**
+```
+Fact-check the following AI-generated content: [粘贴内容]. Focus on: (1) verifiable claims — can they be confirmed?, (2) statistics and numbers — do they match known data?, (3) citations and references — do these sources exist?, (4) dates and timelines — are they accurate?, (5) expert opinions — are they correctly attributed? For each issue found, provide the correction and a reliable source. Rate the overall factual reliability.
+```
+> 来源：IBM / OWASP — AI Content Verification (2026)
+> 用法：AI 生成内容的事实核查，逐条验证可核实的信息点。
+
 ---

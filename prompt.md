@@ -17,6 +17,7 @@
 | 🤖 Agent | 系统提示词、Multi-Agent、RAG、安全 | [categories/Agent.md](categories/Agent.md) |
 | 🎨 创意 | Midjourney、DALL-E、设计、可视化 | [categories/创意.md](categories/创意.md) |
 | 🏠 生活 | 健身、旅行、饮食、家居、约会 | [categories/生活.md](categories/生活.md) |
+| 📊 数据分析 | 数据清洗、SQL、可视化、统计、报表 | [categories/数据分析.md](categories/数据分析.md) |
 
 ---
 
@@ -25,6 +26,7 @@
 ## 📂 每日存档
 
 - [2026-07-03](daily/2026-07-03.md) — 113 个提示词（9 大分类：工作/写作/学习/编程/营销/商业/Agent/创意/生活）
+- [2026-07-05](daily/2026-07-05.md) — 55 个提示词（10 大分类：工作/写作/学习/编程/营销/商业/Agent/创意/生活/数据分析）
 
 ---
 

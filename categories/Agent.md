@@ -250,3 +250,110 @@ Fact-check the following AI-generated content: [粘贴内容]. Focus on: (1) ver
 > 用法：AI 生成内容的事实核查，逐条验证可核实的信息点。
 
 ---
+
+# 2026-07-06
+
+## 11. Agent 工具调用错误恢复
+> 📅 2026-07-06
+
+**Prompt：**
+```
+Define an error recovery protocol for an AI agent:
+
+Agent role: [Agent角色]
+Tools available: [工具列表]
+Common failure modes: [已知失败场景]
+
+Define for each failure:
+1. Detection (how does the agent know the tool call failed?)
+2. Retry logic (retry count, backoff strategy, timeout)
+3. Alternative tool (what to try instead)
+4. Escalation (when to ask for human help)
+5. Logging (what to record for debugging)
+6. User communication (what to tell the user about the failure)
+
+Write as system prompt instructions the agent should follow.
+```
+> 来源：GitHub — ai-boost / Anthropic — Tool-Use Best Practices (2026)
+> 用法：Agent 工具调用的错误恢复协议。
+
+---
+## 12. Agent 长期记忆管理系统
+> 📅 2026-07-06
+
+**Prompt：**
+```
+Design a memory management system for an AI agent:
+
+Agent purpose: [Agent用途]
+Session length: [典型会话轮数]
+Information to retain: [需要记住的信息类型]
+
+Define:
+1. What to store in short-term vs long-term memory
+2. Memory retrieval triggers (when to read from memory)
+3. Memory update triggers (when to write to memory)
+4. Memory consolidation (summarize and compress older memories)
+5. Forgetting strategy (what to discard and when)
+6. Memory conflict resolution (contradictory information)
+7. Privacy controls (what should not be remembered)
+
+Provide the system prompt instructions implementing this design.
+```
+> 来源：Anthropic — Memory Cookbook / GitHub awesome-prompts (2026)
+> 用法：Agent 长期记忆系统设计，含存储/检索/更新/遗忘策略。
+
+---
+## 13. Multi-Agent 评判与投票机制
+> 📅 2026-07-06
+
+**Prompt：**
+```
+Design an evaluation system where multiple agents judge an output:
+
+Task: [任务描述]
+Number of judges: [X个Agent]
+Evaluation criteria: [评判维度]
+Voting mechanism: [多数决/加权/共识]
+
+Define:
+1. Judge role assignments (each agent's evaluation perspective)
+2. Evaluation rubric (scoring criteria per dimension)
+3. Deliberation process (can judges discuss before voting?)
+4. Tie-breaking rule
+5. Output aggregation (how to combine individual scores)
+6. Quality assurance (calibration, outlier detection)
+7. Meta-evaluation (how to improve the evaluation process)
+```
+> 来源：GitHub — ai-boost / DigitalApplied — Prompt Engineering Techniques (2026)
+> 用法：多 Agent 评审机制设计。
+
+---
+## 14. Agent 行为约束与安全边界
+> 📅 2026-07-06
+
+**Prompt：**
+```
+Define behavioral guardrails for an AI agent:
+
+Agent role: [Agent角色]
+Allowed actions: [允许的操作]
+Forbidden actions: [禁止的操作]
+Data access: [可访问的数据]
+Output boundaries: [输出限制]
+
+Create guardrails covering:
+1. Input filtering (reject malicious/harmful requests)
+2. Action boundaries (what the agent can and cannot do)
+3. Output safety (no harmful/biased/unsafe content)
+4. Data privacy (PII handling, data retention)
+5. Escalation paths (when to refuse and hand off)
+6. Audit logging (what to record for compliance)
+7. Jailbreak resistance (prompt injection defenses)
+
+Write as explicit, hard-to-override system prompt rules.
+```
+> 来源：IBM / OWASP LLM Top 10 / SurePrompts — AI Safety (2026)
+> 用法：Agent 行为边界定义，确保 AI 在安全范围内操作。
+
+---

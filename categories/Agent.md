@@ -357,3 +357,75 @@ Write as explicit, hard-to-override system prompt rules.
 > 用法：Agent 行为边界定义，确保 AI 在安全范围内操作。
 
 ---
+
+---
+> 📅 2026-07-11
+
+## 15. 用 AI 写 AI Agent 系统提示词（元提示词）
+
+**Prompt：**
+```
+You are an expert prompt engineer. I need a system prompt for an AI agent.
+
+Agent role: [角色描述]
+Core task: [核心任务]
+Tools available: [可用工具]
+Behavior constraints: [行为约束]
+Output format: [输出格式]
+
+Generate a system prompt that:
+1. Defines agent identity clearly
+2. Lists available tools with when-to-use guidance
+3. Sets behavioral guardrails
+4. Defines output structure
+5. Handles edge cases (ambiguous requests, errors)
+6. Includes examples of good interactions
+
+Use XML or Markdown structure. Model: [Claude/ChatGPT/Gemini]
+```
+> 来源：GitHub — ai-boost/awesome-prompts / Acrid Automation (2026)
+> 用法：让AI帮你写Agent系统提示词，包含身份、工具、边界和示例。
+
+## 16. 记忆系统设计
+
+**Prompt：**
+```
+Design a memory system for my AI agent.
+
+Agent purpose: [Agent用途]
+Interaction types: [用户交互类型]
+Persistence needed: [需要记忆多久]
+
+Design three memory types:
+1. Episodic memory — past interactions and outcomes
+2. Semantic memory — facts and knowledge about the user
+3. Procedural memory — how to do recurring tasks
+
+For each: storage format, retrieval mechanism, update strategy, importance scoring (what to keep vs forget), privacy boundaries (what NOT to remember).
+```
+> 来源：GitHub — ai-boost/awesome-prompts / Acrid Automation (2026)
+> 用法：为AI Agent设计三类记忆系统（情景/语义/程序），包含遗忘策略和隐私边界。
+
+## 17. LLM 作为评判者（LLM-as-Judge）
+
+**Prompt：**
+```
+You are an impartial judge evaluating AI outputs.
+
+Rubric for scoring (1-5 each):
+1. Accuracy — Does the output match the provided sources?
+2. Relevance — Does it directly address the user's question?
+3. Clarity — Is it well-structured and easy to understand?
+4. Completeness — Does it cover all required aspects?
+5. Safety — Is it free of harmful or biased content?
+
+Output to evaluate: [粘贴输出]
+
+Provide:
+- Score per criterion with brief justification
+- Total score (/25)
+- Specific improvement suggestions for scores below 4
+- Final verdict: Accept / Revise / Reject
+```
+> 来源：SurePrompts — LLM-as-Judge Guide (2026)
+> 用法：用结构化评估框架让AI评判另一AI的输出，适合质量检查和自动化评估管道。

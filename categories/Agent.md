@@ -429,3 +429,129 @@ Provide:
 ```
 > 来源：SurePrompts — LLM-as-Judge Guide (2026)
 > 用法：用结构化评估框架让AI评判另一AI的输出，适合质量检查和自动化评估管道。
+
+---
+
+# 2026-07-12
+
+## 18. Agent 记忆架构设计
+
+**Prompt：**
+```
+Design a memory system for my AI agent.
+
+Agent purpose: [Agent的角色和任务]
+Interaction patterns: [用户交互方式]
+Required memory types: [短期/长期/会话/用户画像]
+Memory constraints: [Token限制/隐私要求]
+
+Design the memory architecture:
+
+1. Memory taxonomy — what gets stored (facts, preferences, context, decisions)?
+2. Short-term memory — conversation window management (sliding window, summarization)
+3. Long-term memory — vector store vs structured storage vs key-value
+4. Memory retrieval — similarity search, recency boost, importance weighting
+5. Memory consolidation — when and how to compress old memories
+6. Forgetting mechanism — what to discard and when (relevance decay)
+7. User-specific vs shared memories — privacy boundaries
+8. Memory injection — how to feed relevant memories into context at inference time
+
+Provide a decision tree: which memory strategy fits which use case.
+```
+> 📅 2026-07-12
+> 来源：Agent Architecture / AI Engineering (2026)
+> 用法：从记忆分类到检索策略的Agent记忆系统设计指南，帮助Agent不"失忆"。
+
+---
+
+## 19. Agent 错误恢复与重试策略
+
+**Prompt：**
+```
+Design error handling and recovery mechanisms for my AI agent.
+
+Agent capabilities: [Agent能执行的任务列表]
+Tool integrations: [调用的外部API/工具]
+Failure modes observed: [已观察到的失败模式]
+Criticality: [失败影响程度]
+
+Design the error recovery system:
+
+1. Error classification — transient (retryable) vs permanent (needs human)
+2. Retry strategy — exponential backoff, jitter, max retries, timeout per tool
+3. Graceful degradation — what partial functionality should remain when a tool fails
+4. Alternative paths — if Tool A fails, can Tool B achieve the same outcome?
+5. Human escalation — when and how to escalate to human intervention
+6. State preservation — how to save progress so retry doesn't start from scratch
+7. Error reporting — what to log, what to alert on
+8. Testing failure scenarios — chaos engineering for agents
+
+Provide a sample retry handler template in pseudocode.
+```
+> 📅 2026-07-12
+> 来源：Agent Reliability / AI Engineering (2026)
+> 用法：Agent错误恢复系统——区分可重试和不可重试错误，设计降级和人工升级路径。
+
+---
+
+## 20. Agent 任务编排与调度
+
+**Prompt：**
+```
+Design a task orchestration system for my multi-step agent workflow.
+
+Agent tasks: [Agent需要执行的步骤列表]
+Task dependencies: [哪些任务依赖于其他任务]
+Parallel vs sequential: [哪些可并行，哪些必须串行]
+Human-in-the-loop points: [哪些步骤需要人工批准]
+Timing constraints: [任何时间限制]
+
+Design the orchestration:
+
+1. Task graph — map dependencies as a DAG (directed acyclic graph)
+2. Execution order — topological sort, parallel execution opportunities
+3. State machine — states per task: pending → running → success → failed → retrying
+4. Async coordination — how tasks communicate results to dependent tasks
+5. Progress tracking — how to report status to the user
+6. Pause/Resume — ability to pause at human-in-the-loop gates
+7. Timeout management — max execution time per task and overall
+8. Failure propagation — what happens when one task in a DAG fails
+
+Provide a simple state machine diagram in text format.
+```
+> 📅 2026-07-12
+> 来源：Agent Orchestration / AI Engineering (2026)
+> 用法：Agent任务编排——DAG依赖图+状态机，处理并行执行、人工审批和失败传播。
+
+---
+
+## 21. Agent 成本与延迟优化
+
+**Prompt：**
+```
+Optimize my AI agent for cost and latency without sacrificing quality.
+
+Current agent design: [描述当前Agent结构和调用链路]
+LLM model used: [使用的模型]
+Average tokens per call: [平均token消耗]
+Average latency per call: [平均延迟]
+Call volume: [每日调用量]
+Cost per call: [每次调用的成本]
+
+Optimization strategies to evaluate:
+
+1. Model selection — can cheaper models handle subtasks (router + specialist models)?
+2. Prompt compression — reduce prompt size while preserving context
+3. Caching layer — cache common responses, context summaries
+4. Batching — combine independent calls into one batch
+5. Early exit — detect "good enough" answers before full processing
+6. Speculative execution — start work before all inputs are ready
+7. Fallback chain — try cheap model first, escalate to expensive only if needed
+8. Token budget per task — allocate tokens per subtask
+
+For each strategy, estimate: latency reduction, cost reduction, and quality impact.
+Provide a before/after architecture comparison.
+```
+> 📅 2026-07-12
+> 来源：AI Ops / Agent Economics (2026)
+> 用法：Agent成本优化——用不同模型做不同事、缓存常用响应、早退机制，质量与成本平衡。

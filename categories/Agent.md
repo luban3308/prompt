@@ -555,3 +555,112 @@ Provide a before/after architecture comparison.
 > 📅 2026-07-12
 > 来源：AI Ops / Agent Economics (2026)
 > 用法：Agent成本优化——用不同模型做不同事、缓存常用响应、早退机制，质量与成本平衡。
+
+---
+## 22. Agent 反思与自我纠正机制
+
+**Prompt：**
+```
+Design a self-reflection and correction mechanism for an AI agent:
+
+Agent role: [Agent角色]
+Task domain: [任务领域]
+Common failure modes: [常见失败模式]
+Feedback signal: [反馈来源]
+
+The reflection loop should:
+1. Capture the agent's output and the outcome
+2. Compare against expected success criteria
+3. Identify what went wrong (specific, actionable)
+4. Generate a corrected approach
+5. Store the lesson in a cross-session memory
+6. Apply the lesson to future similar tasks
+7. Periodically review accumulated lessons for patterns
+
+Format: act → observe → diagnose → correct → remember → apply
+```
+> 📅 2026-07-13
+> 来源：GitHub — ai-boost/awesome-prompts (Agent Patterns) 2026
+> 用法：为 AI Agent 添加反思-纠正循环，实现自我改进。
+
+---
+## 23. Agent 工具使用协议模板
+
+**Prompt：**
+```
+Define a tool usage protocol for an AI agent:
+
+Available tools: [列出的工具列表]
+Agent role: [Agent角色]
+Safety constraints: [安全约束]
+
+For each tool, write a protocol that includes:
+1. Tool name and description
+2. When to use this tool (specific triggers/criteria)
+3. When NOT to use this tool (boundaries)
+4. Input format with validation rules
+5. Expected output format
+6. Error handling (what to do if the tool fails)
+7. Rate limit and retry strategy
+8. Logging requirements
+
+Add a meta-rule: "If you are unsure which tool to use, ask for clarification."
+```
+> 📅 2026-07-13
+> 来源：MCP Protocol Docs / SurePrompts 2026
+> 用法：为 Agent 定义每个工具的使用规则和边界。
+
+---
+## 24. 多步骤工作流 Agent 编排
+
+**Prompt：**
+```
+Design a multi-step workflow agent for:
+
+Goal: [最终目标]
+Steps involved: [涉及的步骤]
+Decision points: [需要判断的分支点]
+Human approval gates: [需要人工审批的节点]
+
+The agent should:
+1. Break the goal into a directed acyclic graph (DAG) of tasks
+2. Execute tasks in dependency order
+3. Handle conditional branches based on intermediate results
+4. Pause and request input at decision points
+5. Retry failed steps with exponential backoff
+6. Log progress and decisions at each step
+7. Provide a final summary with all decisions made
+
+Output: workflow diagram in text, with error handling at each node.
+```
+> 📅 2026-07-13
+> 来源：GitHub — Agent Orchestration Patterns 2026
+> 用法：多步骤工作流 Agent 编排，含条件分支和人工审批。
+
+---
+## 25. Agent 记忆系统设计
+
+**Prompt：**
+```
+Design a memory system for an AI agent:
+
+Agent type: [客服/编程助手/个人助理]
+Session length: [单次对话长度]
+Required memory types: [所需的记忆类型]
+
+Design:
+1. Episodic memory (past interactions and outcomes)
+2. Semantic memory (facts, knowledge, concepts)
+3. Procedural memory (how to do things, skills)
+4. Working memory (current task context)
+
+For each type, define:
+- Storage format (vector DB, key-value, structured)
+- Retrieval triggers (when to access which memory)
+- Update strategy (how to keep memories current)
+- Forgetting mechanism (what to prune and when)
+- Conflict resolution (when memories contradict)
+```
+> 📅 2026-07-13
+> 来源：GitHub — AI Agent Memory Patterns 2026
+> 用法：AI Agent 的记忆系统设计，区分情景/语义/程序/工作记忆。

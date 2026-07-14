@@ -664,3 +664,29 @@ For each type, define:
 > 📅 2026-07-13
 > 来源：GitHub — AI Agent Memory Patterns 2026
 > 用法：AI Agent 的记忆系统设计，区分情景/语义/程序/工作记忆。
+
+---
+
+## 26. 知识库 RAG 检索优化
+
+> 📅 2026-07-14
+> 来源：Prompt Engineering Guide — RAG Best Practices 2026
+> 用法：RAG检索系统优化方案，从分段到重排序全面覆盖。
+
+## 27. Agent 记忆系统设计
+
+> 📅 2026-07-14
+> 来源：GitHub — ai-boost/awesome-prompts 2026
+> 用法：AI Agent 记忆系统设计，含记忆类型、存储和遗忘机制。
+
+## 28. 多 Agent 协作协议
+
+> 📅 2026-07-14
+> 来源：GitHub — ai-boost/awesome-prompts (Multi-Agent) 2026
+> 用法：多Agent协作协议设计，含通信、委派和冲突解决机制。
+
+## 29. Agent 输出验证框架
+
+> 📅 2026-07-14
+> 来源：Prompt Engineering Guide — Agent Safety 2026
+> 用法：Agent输出验证框架，从格式到事实到一致性多层验证。

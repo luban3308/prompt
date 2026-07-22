@@ -1118,3 +1118,98 @@ Final verdict: Pass / Needs Minor Revision / Needs Major Revision
 > 用法：六维评价框架评估 AI 输出质量。
 
 ---
+
+## 51. 个人 GPT / 自定义 Agent 构建器
+> 📅 2026-07-22
+
+**Prompt：**
+```
+Help me create a custom AI agent for a specific workflow I repeat often.
+
+Workflow I want to automate:
+- What I do: [描述重复工作]
+- How often: [频率]
+- Current process: [当前手动步骤]
+- Inputs I'd provide: [输入格式]
+- Output I want: [期望输出格式]
+
+Build me:
+1. A name and description for the agent
+2. The full system prompt / instructions (be specific — include formatting rules, tone, what to include and what to skip)
+3. Conversation starters (4 examples of how I'd kick off a session)
+4. Recommended settings (web browsing on/off, code interpreter on/off)
+
+Make the instructions detailed enough that someone else on my team could use this agent and get consistent results.
+```
+> 来源：FindSkill.ai — Personal GPT Builder 2026
+> 用法：为你在 ChatGPT (Custom GPT) 或 Claude Projects 搭建专属 Agent。
+
+---
+
+## 52. MCP Server 开发提示词
+> 📅 2026-07-22
+
+**Prompt：**
+```
+Generate an MCP (Model Context Protocol) server implementation for:
+
+Service to integrate: [API/服务描述]
+Endpoints needed: [需要暴露的端点]
+Authentication: [认证方式]
+Language: [TypeScript / Python / Go]
+
+The MCP server should:
+1. Define tools with clear names and descriptions
+2. Each tool has: name, description, input schema (JSON Schema), output format
+3. Include error handling for each tool
+4. Log tool calls and results
+5. Implement rate limiting
+6. Include health check endpoint
+7. Follow MCP best practices for tool definitions
+
+Provide:
+- Complete server code
+- Tool definition schema
+- Example usage (how the AI agent would call each tool)
+- Error handling patterns
+```
+> 来源：Explainx.ai — MCP Server Development 2026
+> 用法：MCP 协议服务器开发模板，注重工具定义和错误处理。
+
+---
+
+## 53. AI Agent 架构设计提示词
+> 📅 2026-07-22
+
+**Prompt：**
+```
+Design a production-ready AI agent architecture.
+
+Agent purpose: [Agent的主要任务]
+Tools: [可用工具]
+State persistence: [是否需要记忆]
+Multi-turn: [是否多轮对话]
+Safety requirements: [安全约束]
+
+Architecture includes:
+1. System prompt structure (role → rules → tools → output format)
+2. Tool orchestration flow:
+   - How the agent decides which tool to use
+   - How it handles tool failures
+   - How it recovers from errors
+3. State management:
+   - What state to persist
+   - When to clear state
+   - How to handle context window limits
+4. Safety patterns:
+   - Input validation
+   - Output filtering
+   - Human-in-the-loop triggers
+5. Monitoring and logging
+
+Output: architecture document with flow diagrams described in text.
+```
+> 来源：Explainx.ai — AI Agent Architecture 2026
+> 用法：生产级 Agent 架构设计，含工具编排、状态管理和安全模式。
+
+---

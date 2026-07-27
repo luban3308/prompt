@@ -1471,3 +1471,294 @@ If the same mistake happens twice, escalate.
 > 用法：Agent 每次执行后自动反思，从错误中学习。
 
 ---
+
+> 📅 2026-07-27
+
+## 62. Agent 角色与人格定义
+
+**Prompt：**
+```
+Define an AI agent persona for [task/domain, e.g. customer support, research, scheduling]. Include:
+1) Role and primary objective
+2) Tone and communication style
+3) Scope of authority (what it can/can't decide)
+4) Tools it has access to
+5) Escalation rules for edge cases
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：为单一用途 Agent 定义清晰聚焦的角色，包含权限边界和升级规则。
+
+---
+
+> 📅 2026-07-27
+
+## 63. 多步骤任务工作流设计
+
+**Prompt：**
+```
+Design a step-by-step workflow for an AI agent to accomplish [goal]. Include:
+1) Ordered steps with clear inputs/outputs per step
+2) Decision points and branching logic
+3) Tools or data needed at each step
+4) Conditions for stopping or escalating to a human
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：将复杂目标分解为结构化的 Agent 工作流，包含分支逻辑和停止条件。
+
+---
+
+> 📅 2026-07-27
+
+## 64. 工具使用与函数调用指令
+
+**Prompt：**
+```
+Write tool-use instructions for an AI agent with access to [list tools, e.g. web search, calendar, database query].
+For each tool, specify:
+- When to use it
+- Required input format
+- How to handle errors or empty results
+- When NOT to use it
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：精确指定 Agent 何时、如何使用每个工具，包含错误处理和不该用的场景。
+
+---
+
+> 📅 2026-07-27
+
+## 65. 多 Agent 系统设计
+
+**Prompt：**
+```
+Design a multi-agent system to accomplish [complex goal]. Include:
+1) 3-5 specialized agent roles (e.g. planner, researcher, writer, reviewer)
+2) Responsibilities of each agent
+3) How agents hand off work to each other
+4) A coordinator/orchestrator role if needed
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：设计专业 Agent 团队，定义角色、职责和交接机制。
+
+---
+
+> 📅 2026-07-27
+
+## 66. 客服 Agent 系统提示词
+
+**Prompt：**
+```
+Create a system prompt for a customer support AI agent for [business/product]. Include:
+- Friendly, helpful tone guidelines
+- Common issues it should resolve directly
+- Issues requiring escalation to a human
+- Refund/policy boundaries it must not exceed
+- Sample greeting and sign-off
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：为客服 Agent 编写完整的系统提示词，包含边界、升级路径和语气指南。
+
+---
+
+> 📅 2026-07-27
+
+## 67. 研究 Agent 系统提示词
+
+**Prompt：**
+```
+Create a system prompt for a research AI agent tasked with investigating [topic/question]. Include:
+- Step-by-step research process (search, verify, synthesize)
+- Source quality standards
+- How to flag conflicting information
+- Required output format (summary, citations, confidence level)
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：研究 Agent 的完整流程定义，包含来源质量标准和置信度评级。
+
+---
+
+> 📅 2026-07-27
+
+## 68. 日程管理 Agent 提示词
+
+**Prompt：**
+```
+Create a system prompt for a scheduling AI agent that manages [calendar/task system]. Include:
+- Rules for resolving conflicting appointments
+- How to confirm changes with the user before finalizing
+- Priority rules when time slots are limited
+- Communication style for reminders and confirmations
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：让 Agent 管理日程，包含冲突解决、确认和优先级规则。
+
+---
+
+> 📅 2026-07-27
+
+## 69. Agent 错误处理与降级指令
+
+**Prompt：**
+```
+Write error-handling and fallback instructions for an AI agent performing [task]. Include:
+- What to do when a tool call fails
+- What to do when required information is missing
+- How to communicate uncertainty to the user
+- When to retry vs. when to stop and ask for help
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：确保 Agent 优雅失败而非直接崩溃，给用户清晰的降级路径。
+
+---
+
+> 📅 2026-07-27
+
+## 70. 规划者-执行者双 Agent 系统
+
+**Prompt：**
+```
+Design a two-agent system for [task] with:
+1) A Planner agent that breaks the goal into an ordered task list
+2) An Executor agent that carries out each task and reports results back to the Planner
+Define the message format they use to communicate and how the Planner decides the task is complete.
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：将规划和执行分离到两个 Agent，减少单 Agent 的上下文混乱。
+
+---
+
+> 📅 2026-07-27
+
+## 71. 数据处理 Agent 提示词
+
+**Prompt：**
+```
+Create a system prompt for a data-processing AI agent handling [data type, e.g. spreadsheets, form submissions]. Include:
+- Validation rules and how to flag bad data
+- Transformation steps in order
+- What counts as a successful output
+- How to report a summary of changes made
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：数据处理 Agent 模板，包含验证、转换和变更报告。
+
+---
+
+> 📅 2026-07-27
+
+## 72. 潜在客户筛选 Agent
+
+**Prompt：**
+```
+Create a system prompt for a lead-qualification AI agent for [business]. Include:
+- Key qualifying questions to ask
+- Scoring criteria for a "qualified" lead
+- Tone for engaging prospects
+- Handoff format when passing a qualified lead to a sales rep
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：自动化潜客筛选，评估后标准化交接给销售代表。
+
+---
+
+> 📅 2026-07-27
+
+## 73. Agent 记忆管理规则
+
+**Prompt：**
+```
+Write memory management rules for an AI agent handling [task] across a long session. Specify:
+- What information should be retained between steps
+- What should be discarded to save context space
+- How to summarize prior steps when context gets long
+- How to handle conflicting information over time
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：长会话中的记忆管理，平衡信息保留和上下文窗口限制。
+
+---
+
+> 📅 2026-07-27
+
+## 74. Reviewer 质量检查 Agent
+
+**Prompt：**
+```
+Create a system prompt for a Reviewer agent that checks the output of a Writer/Executor agent for [task type].
+Include:
+- Specific quality criteria to check against
+- Format for giving structured feedback
+- Rules for when to approve vs. request revisions
+- How many revision rounds are allowed
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：增加 QA 环节，用专门的 Reviewer Agent 检查另一个 Agent 的输出。
+
+---
+
+> 📅 2026-07-27
+
+## 75. 新手引导 Onboarding Agent
+
+**Prompt：**
+```
+Create a system prompt for an onboarding AI agent for [product/platform]. Include:
+- Step-by-step onboarding flow
+- Encouraging, patient tone
+- How to detect when a user is stuck and offer help
+- When to hand off to human support
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：创建引导新用户逐步上手的 Agent，在用户卡住时主动帮助。
+
+---
+
+> 📅 2026-07-27
+
+## 76. Agent 安全护栏与边界
+
+**Prompt：**
+```
+Write a set of guardrails for an AI agent operating in [domain]. Include:
+- Actions it must never take without human approval
+- Topics or requests it should decline
+- Data it must never expose or share
+- What to do if a user tries to override these rules
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：定义 Agent 永远不能逾越的红线，包含数据保护和越狱防护。
+
+---
+
+> 📅 2026-07-27
+
+## 77. 辩论式多 Agent 评估
+
+**Prompt：**
+```
+Design a debate-style multi-agent setup to evaluate [decision/idea]. Include:
+1) An Advocate agent arguing in favor
+2) A Skeptic agent raising risks and counterpoints
+3) A Judge agent that weighs both sides and gives a final recommendation with reasoning
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：用正方、反方、裁判三个 Agent 从多个角度压力测试决策。
+
+---
+
+> 📅 2026-07-27
+
+## 78. Agent 可靠性测试计划
+
+**Prompt：**
+```
+Create a testing plan to evaluate an AI agent built for [task]. Include:
+- 10 realistic test scenarios, including edge cases
+- Expected correct behavior for each
+- Metrics to measure success (accuracy, tone, task completion)
+- How to log and review failures for improvement
+```
+> 来源：I Love AI Prompt — 20+ Best AI Prompts for AI Agents (2026)
+> 用法：在部署前用 10 个真实场景全面测试 Agent 的可靠性。
+
+---

@@ -2019,3 +2019,75 @@ Agent 可执行的操作：[列出操作类型]
 > 用法：一份文件承载项目长期上下文，让 Agent"自带记忆"进入每次会话。
 
 ---
+
+## 91. 会话压缩交接（.md 上下文延续）
+
+
+**Prompt：**
+```
+Summarize our conversation so far into a single markdown file (.md) that captures:
+- Decisions made
+- Open questions
+- Key facts
+- Next steps
+
+Format it so I can paste it into a fresh session and continue seamlessly.
+```
+
+> 📅 2026-08-05
+> 来源：Reddit r/ClaudeAI — 2026 最常用 Claude 提示词
+> 用法：长对话快超上下文时，把会话压成 .md 交接文件，新会话直接续上。
+
+
+---
+
+## 92. 对抗式评审员（挑刺模式）
+
+
+**Prompt：**
+```
+Act as an adversarial reviewer. Poke holes in my idea/plan:
+[方案]
+
+Find: the weakest assumptions, the failure scenarios I haven't considered, and what a competitor would exploit. Be blunt.
+```
+> 📅 2026-08-05
+> 来源：Reddit r/ClaudeAI — 2026 常用 Claude 提示词
+> 用法：重大决策前让 AI 当"红队"，主动找漏洞而不是求认同。
+
+
+---
+
+## 93. 逐问澄清先行（一次一问）
+
+
+**Prompt：**
+```
+Before starting this task, ask me clarifying questions ONE at a time and wait for my answer each time.
+Only begin work after I approve the final understanding.
+
+Task: [任务描述]
+```
+> 📅 2026-08-05
+> 来源：Reddit r/ClaudeAI — 项目启动提示词（u/Miyamoto_-_Musashi）
+> 用法：复杂项目启动时强制 AI 慢下来，逐问澄清并等你批准再动手。
+
+
+---
+
+## 94. 联网事实核查指令（Gemini）
+
+
+**Prompt：**
+```
+[你的问题/内容]
+
+Look this up / Verify with current data before answering.
+Ground your response in search results and cite the sources you used.
+```
+> 📅 2026-08-05
+> 来源：SurePrompts — 50 Best Gemini Prompts in 2026
+> 用法：Gemini 接入 Google 搜索，需要时效性事实时用此指令激活接地回答。
+
+
+---

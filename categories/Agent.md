@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 61 个提示词，每日更新归档。
+共 66 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -2089,5 +2089,121 @@ Ground your response in search results and cite the sources you used.
 > 来源：SurePrompts — 50 Best Gemini Prompts in 2026
 > 用法：Gemini 接入 Google 搜索，需要时效性事实时用此指令激活接地回答。
 
+
+---
+
+## 95. 线索抓取验证富化流水线
+
+**Prompt：**
+
+```
+Scrape leads from [平台/数据源] based on the industry [行业] and location [地区] I specify.
+Then verify 80% match my target market before doing the full scrape.
+When done, enrich missing emails using a secondary service.
+
+输出：最终线索表（公司/联系人/邮箱/匹配度评分）+ 每一步的执行日志。
+```
+
+> 📅 2026-08-08
+> 来源：YouTube — Agentic Workflows: Build & Sell AI Automations (2026)
+> 用法：真实落地过的线索系统提示词：先小样本验证匹配度再全量抓取，最后富化邮箱。
+
+---
+
+## 96. Agent 工具失败优雅处理
+
+**Prompt：**
+
+```
+你在执行任务时可能遇到工具失败。请遵守以下规则：
+
+1. 搜索无结果：换 2 个关键词重试，仍失败则明确告知「未找到」，不要编造
+2. 页面加载失败：标记来源不可用，继续用其他来源
+3. API 报错：记录错误码，给出重试或降级方案
+4. 任何一步失败都要在最终报告中列出「失败项与原因」
+
+当前任务：[任务描述]
+```
+
+> 📅 2026-08-08
+> 来源：DEV Community — How I Built My First AI Agent Workflow in 2026
+> 用法：工具失败是常态：给 Agent 定义失败处理协议（重试→降级→如实报告），杜绝幻觉式成功。
+
+---
+
+## 97. 参数化 Agent 提示词模板
+
+**Prompt：**
+
+```
+帮我建立一个参数化 Agent 系统提示词模板：
+
+Agent 类型：[研究/客服/代码/内容]
+可变参数：[任务/工具列表/输出格式/语气]
+
+模板结构：
+1. 固定部分：身份、原则、安全规则
+2. 参数占位符：{{task}} {{tools}} {{format}} {{tone}}
+3. 使用说明：如何为不同 Agent 实例填充参数
+
+请输出可直接复用的模板与 2 个填充示例。
+```
+
+> 📅 2026-08-08
+> 来源：DEV Community — AI Agent Workflow 2026（Prompt templates, not one-off prompts）
+> 用法：提示词模板化而非一次性编写，同类型 Agent 换参数即复用，质量稳定可维护。
+
+---
+
+## 98. Agent 输出 Schema 校验
+
+**Prompt：**
+
+```
+你是一个 Agent 编排器。在接收子 Agent 输出前，按以下 Schema 校验：
+
+Schema:
+{
+  "status": "ok | error",
+  "result": "object, required when status=ok",
+  "error": "string, required when status=error",
+  "confidence": "number 0-1"
+}
+
+校验规则：
+- 输出必须符合 Schema，否则视为失败并请求重试
+- 缺失字段用 null，不用 N/A
+- 校验失败记录 1 次重试，仍失败则标记 error 上报
+
+测试输入：[子 Agent 输出]
+```
+
+> 📅 2026-08-08
+> 来源：DEV Community — AI Agent Workflow 2026（Output validation）
+> 用法：永远不要信任 Agent 输出：用 Schema 强制校验结构，失败自动重试或上报。
+
+---
+
+## 99. 业务流程自动化审计
+
+**Prompt：**
+
+```
+帮我审计团队中可自动化的业务流程：
+
+当前流程清单：[粘贴流程描述]
+团队规模：[人数]
+现有工具：[CRM/邮件/表格/IM 等]
+
+请输出：
+1. 按「重复性×耗时×结构化程度」评分排序的候选流程
+2. 每个流程的自动化方案（触发条件→步骤→工具）
+3. 预期 ROI（节省工时/月）与实施复杂度
+4. 从哪个流程开始试点及原因
+```
+
+> 📅 2026-08-08
+> 来源：Reinventing.ai — From Prompts to Workflows: AI Agents Transforming SMB Automation 2026
+> 用法：先审计再动手：找重复性最高、最结构化、最耗时的流程试点，用 ROI 说话。
 
 ---

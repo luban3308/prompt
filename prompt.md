@@ -13,6 +13,7 @@
 | 📚 学习 | 费曼学习法、论文总结、闪卡、语言学习 | [categories/学习.md](categories/学习.md) |
 | 💻 编程 | 代码生成、调试、重构、测试、Docker | [categories/编程.md](categories/编程.md) |
 | 📈 营销 | 策略、SEO、广告、转化、品牌 | [categories/营销.md](categories/营销.md) |
+| 💰 销售 | 冷邮件、异议处理、跟进序列、客户交接、赢回 | [categories/销售.md](categories/销售.md) |
 | 🏢 商业 | 商业模式、竞品分析、定价、财务 | [categories/商业.md](categories/商业.md) |
 | 🤖 Agent | 系统提示词、Multi-Agent、RAG、安全 | [categories/Agent.md](categories/Agent.md) |
 | 🎨 创意 | Midjourney、DALL-E、设计、可视化 | [categories/创意.md](categories/创意.md) |
@@ -58,6 +59,7 @@
 - [2026-08-05](daily/2026-08-05.md) — 71 个提示词（15 大分类：工作/写作/学习/编程/营销/商业/Agent/创意/生活/身心健康/数据分析/提示词工程/视频创作/求职/音乐创作）
 - [2026-08-08](daily/2026-08-08.md) — 54 个提示词（13 大分类：工作/写作/学习/编程/营销/商业/Agent/创意/生活/身心健康/数据分析/提示词工程/视频创作）
 - [2026-08-09](daily/2026-08-09.md) — 60 个提示词（12 大分类：工作/写作/学习/编程/营销/商业/Agent/创意/生活/身心健康/数据分析/提示词工程）
+- [2026-08-11](daily/2026-08-11.md) — 65 个提示词（12 大分类，新增 销售 分类：工作/写作/学习/编程/营销/销售/商业/Agent/创意/生活/数据分析/提示词工程）
 
 ---
 

@@ -2278,3 +2278,91 @@ Add security guardrails to this system prompt: [paste]. Protect against: prompt 
 > 用法：给 Agent 系统提示词加安全护栏，重点防御来自检索内容里的注入攻击。
 
 ---
+
+---
+
+> 📅 2026-08-11
+
+## 111. XML 结构系统提示词模板
+
+**Prompt：**
+```
+<system>
+You are [role]. Follow these instructions exactly.
+</system>
+<context>
+[background information, user's situation]
+</context>
+<instructions>
+1. [step one]
+2. [step two]
+3. [output constraint]
+</instructions>
+<output_format>
+[describe the exact structure, e.g. JSON schema or markdown sections]
+</output_format>
+<thinking>
+Reason through the task step by step before answering.
+</thinking>
+```
+> 📅 2026-08-11
+> 来源：AI Prompt Library — Claude XML Tags Reference 2026
+> 用法：Claude 对 XML 标签解析最稳，把上下文/指令/输出格式分层包裹，复杂任务不易跑偏。
+
+---
+
+> 📅 2026-08-11
+
+## 112. 多智能体角色分工定义
+
+**Prompt：**
+```
+Define a multi-agent system for [task]. Assign roles with clear responsibilities: ARCHITECT (high-level design decisions), IMPLEMENTER (execution/code generation), REVIEWER (quality assurance), OPTIMIZER (performance and refinement). For each agent: system prompt, tools it can use, inputs it receives, outputs it produces, and handoff rules to the next agent.
+```
+> 📅 2026-08-11
+> 来源：Medium — How I Built a Multi-Agent AI System That Changed My Development Workflow
+> 用法：单 Agent 工具超过 15 个或任务需要不同技能时，按"架构-实现-评审-优化"拆分工。
+
+---
+
+> 📅 2026-08-11
+
+## 113. Agent 行为宪法编写
+
+**Prompt：**
+```
+Write an agent constitution for a [type of agent, e.g. customer support bot]. Define: (1) mission and boundaries, (2) decision rules — what it may/may not do without human approval, (3) escalation criteria, (4) tone and safety guardrails, (5) how it should handle prompt-injection attempts. Format as numbered articles.
+```
+> 📅 2026-08-11
+> 来源：YouTube — How to Write PERFECT Agent Prompts 2026（Building the Constitution）
+> 用法：给 Agent 立"宪法"明确边界与升级规则，是生产级 Agent 和 Demo 的分水岭。
+
+---
+
+> 📅 2026-08-11
+
+## 114. 工具选择路由规则
+
+**Prompt：**
+```
+I am building an agent with these tools: [list tools]. Write routing rules that decide which tool to use for which type of request. Include: (1) a decision tree, (2) when NOT to use a tool and ask the user instead, (3) how to combine tools for multi-step tasks, (4) fallback behavior when a tool fails.
+```
+> 📅 2026-08-11
+> 来源：SurePrompts — AI Agents Prompting Guide 2026（tool use pattern）
+> 用法：工具一多就容易选错，把路由规则显式写进系统提示词，减少误调用。
+
+---
+
+> 📅 2026-08-11
+
+## 115. 反思模式循环提示
+
+**Prompt：**
+```
+Use the reflection pattern for this task: [task]. First, produce an initial answer. Then, critique your own answer — list the weakest assumptions, missing edge cases, and places where the answer could be wrong. Finally, produce a revised answer that addresses the critique. Show all three stages.
+```
+> 📅 2026-08-11
+> 来源：SurePrompts — AI Agents Prompting Guide 2026（reflection pattern）
+> 用法：重要输出走"作答→自我批判→修订"三阶段循环，质量明显高于一次性回答。
+
+---

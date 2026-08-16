@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 66 个提示词，每日更新归档。
+共 124 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -2421,3 +2421,69 @@ You are a task decomposition specialist. Break [goal] into subtasks for an auton
 > 来源：综合整理 — 2026 Agent 编排提示词实践
 > 用法：控制 Agent 任务拆解的粒度，每个子任务可独立验证，明确人工审批点。
 ---
+
+> 📅 2026-08-16
+
+## 120. Agent 日志审计提示词
+
+**Prompt：**
+```
+You are an auditor reviewing an AI agent's execution logs. Logs: [paste logs]. Analyze: (1) did the agent follow its instructions at each step, (2) any unauthorized or unexpected tool calls, (3) loops or wasted actions (repeated calls, redundant reads), (4) places where the agent fabricated results instead of verifying, (5) security concerns (sensitive data in prompts, unsafe outputs). Produce a findings table: timestamp | issue | severity | recommended fix.
+```
+> 📅 2026-08-16
+> 来源：Piebald-AI — claude-code-system-prompts (GitHub) 2026
+> 用法：Agent 跑完关键任务后审计日志，发现指令偏离和安全隐患。
+---
+
+> 📅 2026-08-16
+
+## 121. Agent 上下文裁剪与优先级策略
+
+**Prompt：**
+```
+Design a context management strategy for an agent with a limited context window handling: [task type]. Requirements: (1) which information must always stay in context vs can be summarized vs can be dropped, (2) a summarization trigger and what the summary must preserve, (3) how to handle long documents (chunk, extract, reference by path), (4) a priority order for eviction when the window fills, (5) how to signal to the user when information was dropped. Output as a playbook the agent follows.
+```
+> 📅 2026-08-16
+> 来源：综合整理 — 2026 Agent 上下文工程提示词实践
+> 用法：给长任务 Agent 配置上下文管理规则，防止"忘记早期约束"导致输出漂移。
+---
+
+> 📅 2026-08-16
+
+## 122. 多 Agent 冲突消解协议
+
+**Prompt：**
+```
+Design a conflict resolution protocol for a multi-agent system where [agent A] and [agent B] disagree on [decision type]. Rules: (1) each agent states its position with evidence, (2) a mediator agent compares against the shared goal and constraints, (3) if still unresolved: rank by confidence, cost of being wrong, and reversibility, (4) define when to escalate to a human, (5) log the resolution and rationale for future runs. Include a disagreement template both agents fill in.
+```
+> 📅 2026-08-16
+> 来源：综合整理 — 2026 Multi-Agent 协作提示词实践
+> 用法：多 Agent 协作时遇到意见冲突，用协议化流程消解而不是互相覆盖。
+---
+
+> 📅 2026-08-16
+
+## 123. Agent 沙箱测试环境提示词
+
+**Prompt：**
+```
+Set up a safe test harness for this agent before production use: [agent description + tools]. Include: (1) a mock environment for each tool (fake APIs, sample data, simulated failures), (2) a test suite of 10 scenarios: happy path, empty input, malformed input, permission denied, timeout, rate limit, ambiguous request, conflicting instructions, malicious input, and mid-task context loss, (3) for each: expected behavior and pass criteria, (4) a checklist of what must be verified before graduating to production.
+```
+> 📅 2026-08-16
+> 来源：综合整理 — 2026 Agent 测试提示词实践
+> 用法：Agent 上线前在沙箱里跑 10 类场景测试，特别是恶意输入和失败恢复。
+---
+
+> 📅 2026-08-16
+
+## 124. Agent 输出溯源与引用检查
+
+**Prompt：**
+```
+You are a verification agent. Given this output produced by another agent: [paste output], and the source material it claims to use: [paste sources], verify: (1) every factual claim maps to a source (or is flagged as unsupported), (2) quotes are exact, not paraphrased, (3) numbers and dates match the source, (4) conclusions don't overstate what the sources support, (5) anything that appears fabricated. Output a claim-by-claim table: claim | supported? | source | correction needed.
+```
+> 📅 2026-08-16
+> 来源：Anthropic / 综合整理 — 2026 Agent 验证提示词实践
+> 用法：让另一个 Agent 做交叉验证，抓出主 Agent 的幻觉和过度推断。
+---
+

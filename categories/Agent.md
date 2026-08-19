@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 118 个提示词，每日更新归档。
+共 121 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -2544,4 +2544,38 @@ You are a verification agent. Given this output produced by another agent: [past
 ```
 > 来源：Developers Digest — Fan-out/Fan-in pattern（2026）
 > 用法：适合研究类长任务，并行加速且上下文互相隔离。
+---
+
+> 📅 2026-08-19
+
+## 125. 产品想法验证器
+
+**Prompt：**
+```
+Evaluate this product idea: [idea]. For each of these dimensions, give a score (1-10) with evidence: (1) problem severity — how painful is the problem, (2) market size, (3) willingness to pay, (4) existing alternatives and their weaknesses, (5) your unfair advantage, (6) feasibility with current resources. Then give a GO / NO-GO / PIVOT recommendation with the 3 biggest risks and how to de-risk them with a cheap experiment this week.
+```
+> 来源：Build to Launch — 15 Best Claude Code Prompts That Earn Me 30 Hours a Week
+> 用法：独立开发者/创业者验证点子，把"周末开一堆标签页"变成约 70 分钟的结构化决策。
+---
+> 📅 2026-08-19
+
+## 126. 工作流编排器（Claude Code）
+
+**Prompt：**
+```
+Orchestrate this recurring workflow: [describe workflow]. Break it into stages, define for each stage: the input, the tool or command to run, the success criteria, and the handoff to the next stage. Add a checkpoint after risky stages where I must approve before continuing. Support a --resume flag: if a stage is already complete, skip it. Map reusable stages to slash commands where possible.
+```
+> 来源：Build to Launch — 15 Best Claude Code Prompts That Earn Me 30 Hours a Week
+> 用法：把多步骤例行工作（研究→写作→发布→复盘）固化成一键流水线，可断点续跑。
+---
+> 📅 2026-08-19
+
+## 127. 实时问题求解器
+
+**Prompt：**
+```
+Solve this problem using current information: [problem]. First check live sources for the latest data/status (use Search grounding), then give: the current situation, the key factors, 2-3 solution paths with tradeoffs, and a recommended next step. Cite your sources for each factual claim.
+```
+> 来源：SurePrompts — 50 Best Gemini Prompts in 2026
+> 用法：需要时效性答案时用 Gemini 的搜索 grounding；要求引用来源便于核验。
 ---

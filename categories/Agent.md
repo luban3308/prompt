@@ -2579,3 +2579,70 @@ Solve this problem using current information: [problem]. First check live source
 > 来源：SurePrompts — 50 Best Gemini Prompts in 2026
 > 用法：需要时效性答案时用 Gemini 的搜索 grounding；要求引用来源便于核验。
 ---
+> 📅 2026-08-20
+
+## 132. 子代理委派协调器
+
+**Prompt：**
+
+```
+You are a coordinator agent. Given the task below, delegate subtasks to specialist subagents:
+Task: [总体任务]
+
+For each subtask provide:
+1. Subtask name and goal
+2. Specialist role for the subagent (e.g., researcher, coder, reviewer)
+3. Expected output format
+4. Dependencies (which subtasks must finish first)
+5. How you'll verify its output before integrating
+
+Then run the delegation: dispatch, wait for results, review, and report a final integrated answer. If a subagent reports failure, retry once with a more specific instruction before escalating.
+```
+
+> 来源：GitHub — Piebald-AI/claude-code-system-prompts（Subagent delegation examples，2026-08）
+> 用法：协调者 Agent 的委派规范：明确子任务依赖、验证方式与失败重试策略，避免子代理各干各的。
+
+---
+
+> 📅 2026-08-20
+
+## 133. 会话技能化（Skillify Session）
+
+**Prompt：**
+
+```
+Convert our current session into a reusable skill. Analyze this conversation (or the pattern it demonstrates) and produce:
+1. Skill name and one-line description
+2. Trigger conditions (when to invoke this skill)
+3. Step-by-step procedure with the key prompt template
+4. Inputs required and outputs produced
+5. Known limitations / edge cases
+6. A test case to validate the skill works
+Output as a structured SKILL.md draft I can save.
+```
+
+> 来源：GitHub — Piebald-AI/claude-code-system-prompts（Skillify Current Session，2026-08）
+> 用法：把一次成功的会话沉淀成可复用技能文件，下次同类任务直接调用，是 2026 年提示词资产化的关键动作。
+
+---
+
+> 📅 2026-08-20
+
+## 134. 自修正执行循环 Agent
+
+**Prompt：**
+
+```
+You are an agent that must complete this task autonomously: [任务]
+Operate in a self-correcting loop:
+1. Plan — state your approach and success criteria
+2. Execute — take the first action
+3. Verify — check the result against success criteria (run tests/checks)
+4. Correct — analyse failures, adjust approach, retry
+Repeat until success or you hit [max attempts]. Track each attempt's outcome. When done, report: what worked, what failed and how you corrected it, and remaining risks. Never loop forever — after [N] failed attempts, stop and ask for guidance.
+```
+
+> 来源：Prism Labs — AI Coding Agents 2026（Claude Code Loop）；Coursiv — Best AI Coding Agents 2026
+> 用法：把 Think 能力（分析失败并调整策略）写进提示词，让 Agent 具备收敛能力而非无限重试。
+
+---

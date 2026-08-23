@@ -2935,3 +2935,177 @@ Failure behavior must be explicit rules, not vague suggestions.
 > 用法：把"遇到 X 就做 Y"的失败行为写进系统提示词，Agent 在模糊、越界、工具失败时行为可预期。
 
 ---
+
+> 📅 2026-08-23
+
+## 147. Agent 提示词版本管理
+
+**Prompt：**
+```
+Design a version management workflow for agent system prompts:
+
+Agent: [Agent 名称/功能]
+Current prompt: [粘贴现有系统提示词]
+Change history: [如有：变更记录]
+Team: [维护团队]
+
+Design:
+1. Versioning scheme (semantic: major for behavior changes, minor for tweaks, patch for wording)
+2. Changelog format for prompt changes (what changed, why, who, when, expected impact)
+3. Rollback procedure (how to revert to a previous version quickly)
+4. Testing gate before promoting a version (regression checks to run)
+5. Where to store versions (repo structure: prompts/agent_name/v1.2.3.md + CHANGELOG.md)
+6. Review process: who approves behavior-changing edits
+
+Provide a template for the CHANGELOG entry and a PR checklist for prompt changes.
+```
+
+> 来源：Larridin — Developer Productivity Benchmarks 2026 (AI-Native Engineering) + Prompt Architects
+> 用法：把 Agent 提示词当代码管：语义化版本、变更日志、回滚、回归测试门禁，避免"悄悄改坏"。
+
+---
+
+> 📅 2026-08-23
+
+## 148. Agent 评估指标体系
+
+**Prompt：**
+```
+Define an evaluation framework for my AI agent:
+
+Agent purpose: [功能描述]
+Critical tasks: [核心任务]
+Failure modes: [可能出错的方式]
+Users: [使用人群]
+
+Design:
+1. Success metrics: task success rate, accuracy on ground-truth set, user satisfaction, escalation rate
+2. Test sets: golden set (known answers), edge cases, adversarial cases, long-tail user queries
+3. Quality dimensions to score: correctness, completeness, formatting compliance, safety, latency, cost per task
+4. Evaluation method: LLM-as-judge rubric (with scoring criteria per dimension) vs. human eval vs. automated checks
+5. Regression gate: minimum scores required before a new prompt/version ships
+6. Monitoring in production: which metrics to track continuously, alert thresholds
+
+Output as a ready-to-use evaluation checklist/scorecard.
+```
+
+> 来源：Maxim AI — Top 5 Prompt Orchestration Platforms (2026) 评估理念
+> 用法：为 Agent 建立可量化的评估体系：测试集、评分维度、LLM-as-judge 标准、上线门槛、生产监控。
+
+---
+
+> 📅 2026-08-23
+
+## 149. MCP 工具错误信息设计
+
+**Prompt：**
+```
+Design error messages and error handling for this MCP tool:
+
+Tool name: [工具名]
+Function: [功能]
+Input schema: [输入参数]
+Common failure cases: [常见失败场景]
+Caller: [调用方 Agent 类型]
+
+Design:
+1. Error taxonomy: categorize errors (invalid input, auth, timeout, rate limit, upstream failure, partial success)
+2. Error message format: structured (error code, user-facing message, machine-readable details, suggested action)
+3. For each error type: example message, what the agent should do (retry/ask user/abort), retry policy
+4. Partial success handling: how to report "did half the job"
+5. Degradation: when should the tool refuse vs. return best-effort results?
+6. Logging: what to log for debugging without leaking sensitive data
+
+Provide: error schema (JSON), message templates, and an example tool response for each error class.
+```
+
+> 来源：GitHub — danielrosehill/AI-Orchestration-System-Prompts + MCP 实践 2026
+> 用法：让 MCP 工具的错误信息"Agent 可读"：结构化错误码+建议动作，Agent 才能优雅降级而不是死循环重试。
+
+---
+
+> 📅 2026-08-23
+
+## 150. 混合检索策略设计
+
+**Prompt：**
+```
+Design a hybrid retrieval strategy for my RAG system:
+
+Knowledge base: [数据描述/规模]
+Query types: [用户问题类型]
+Current retrieval: [现有方案，如有]
+Latency budget: [延迟预算]
+
+Design:
+1. Retrieval arms: dense (embeddings) + sparse (BM25/keyword) + optional (graph, SQL, metadata filter)
+2. Query routing: when to use which arm (or all) — decision rules
+3. Fusion method: reciprocal rank fusion (RRF) / weighted score / reranker
+4. Reranking: cross-encoder model choice, top-k to rerank, cutoff
+5. Chunking & indexing notes that affect hybrid recall
+6. Evaluation: retrieval quality metrics (recall@k, MRR, hit rate) on a test query set
+7. Fallback: what happens when no arm returns good results (query rewrite, ask clarifying question)
+
+Output: architecture diagram (text) + config parameters + evaluation plan.
+```
+
+> 来源：ExplainX — Multi-Agent Orchestration Patterns (2026) + RAG 最佳实践
+> 用法：为 RAG 设计"稠密+稀疏+重排"的混合检索架构，含路由规则、融合方法和评估方案。
+
+---
+
+> 📅 2026-08-23
+
+## 151. Agent 工具权限最小化
+
+**Prompt：**
+```
+Apply least-privilege principles to this agent's tool access:
+
+Agent: [Agent 描述]
+Tools available: [列出所有工具及权限]
+Task scope: [Agent 被允许做的事]
+Environment: [开发/生产]
+
+Design:
+1. For each tool: minimum scope needed (read-only vs. write, specific resources, row/field-level limits)
+2. Remove or restrict tools the agent doesn't strictly need
+3. Sensitive operations: which need human approval gates (deletes, money moves, external sends, credential access)
+4. Time/rate limits per tool to contain blast radius
+5. Audit trail: what to log per tool call
+6. Escalation path: how the agent requests additional permissions (instead of silently having them)
+
+Output: a permission matrix table (tool | allowed actions | restrictions | approval needed | logging).
+```
+
+> 来源：Codebridge — Multi-Agent AI Orchestration Guide (2026) 安全部分
+> 用法：用最小权限矩阵约束 Agent 的工具访问，生产环境必备：能只读就不给写，能批内就不给全局。
+
+---
+
+> 📅 2026-08-23
+
+## 152. Agent 场景剧本测试
+
+**Prompt：**
+```
+Write scenario scripts to test my agent before release:
+
+Agent: [Agent 描述]
+Purpose: [核心功能]
+Known failure modes: [已知弱点]
+
+Create test scenarios:
+1. Happy path: 3 normal tasks with expected outputs
+2. Edge cases: 5 unusual-but-valid inputs (empty, extreme lengths, ambiguous phrasing, mixed languages, unexpected formats)
+3. Adversarial: 3 prompt injection attempts, 2 attempts to make it exceed permissions, 1 attempt to extract system prompt
+4. Recovery: 2 scenarios where a tool fails mid-task — what should the agent do?
+5. Multi-turn: 2 long conversations testing context maintenance and non-repetition
+
+For each scenario: input script, expected behavior (pass criteria), common failure (what to watch for), and severity if it fails.
+```
+
+> 来源：Levelop — AI Agent Orchestration Frameworks Guide (2026) 测试理念
+> 用法：上线前用"剧本"系统性测试 Agent：正常路径、边界、对抗、恢复、多轮五类场景，替代随意的聊天测试。
+
+---

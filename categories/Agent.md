@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 160 个提示词，每日更新归档。
+共 188 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -3782,3 +3782,87 @@ Agent 角色：[如"客服 Agent / 数据分析 Agent"]
 > 📅 2026-08-28
 > 来源：Vellum — The 2026 Guide to AI Agent Workflows（Sectioning 并行分治模式）
 > 用法：长文档分析用"分块并行+汇总"替代单 Agent 通读，速度提升且每块专注度更高；有依赖的部分仍需串行。
+
+## 175. Agent 系统提示词七块模板
+
+**Prompt：**
+```
+Write an agent system prompt using the 7-block structure:
+
+ROLE: [who the agent is, in one line, and what it is NOT]
+GOAL: [the outcome it must produce; when is the job "done"]
+TOOLS: [each tool: name, when to use it, when NOT to use it, output it returns]
+MEMORY: [what to remember across steps, what to forget, what is canonical/authoritative]
+GUARDRAILS: [hard rules: what it must never do, refusal behavior, sensitive-data handling]
+ESCALATION: [when to stop and ask a human, what info to include when escalating]
+OUTPUT FORMAT: [exact structure of the final deliverable]
+
+Write it as an operating manual, not a personality sketch. Use headings and imperative sentences. Keep it under 400 words. Add a "stop conditions" line: max steps and max cost before escalating.
+```
+> 📅 2026-08-29
+> 来源：Taskade — AI Agent Prompts: 12 Copyable System Prompt Templates（2026）
+> 用法：生产级 Agent 提示词的标准骨架——角色/目标/工具/记忆/护栏/升级/输出格式七块，缺一块都会在无人值守时出问题。
+
+---
+
+## 176. Agent 长任务进度汇报协议
+
+**Prompt：**
+```
+You are running a long task ([describe task, expected duration > 10 minutes]).
+
+Follow this progress-reporting protocol:
+1. After every major step, emit a status line: [STEP NAME] | done/working/blocked | % complete | next action
+2. If a step takes longer than [X] minutes, send an interim "still working" signal with what's happening
+3. If blocked: state the blocker, 2 attempted workarounds, and the exact question for a human
+4. At completion: final summary with (a) what was delivered, (b) deviations from plan, (c) anything a human must verify
+
+Never silently loop or retry the same failing action more than [N] times — escalate instead.
+```
+> 📅 2026-08-29
+> 来源：基于 Musketeers Tech — Prompt Engineering Best Practices for AI Agents（2026）整理
+> 用法：无人值守的 Agent 最怕"静默卡死"——强制进度信标、卡点上报和重试上限，让长任务可监控、可干预。
+
+---
+
+## 177. Agent 角色卡模板（Role Card）
+
+**Prompt：**
+```
+Create a role card for an AI agent:
+
+AGENT NAME: [name]
+MISSION (one sentence, outcome-focused): 
+SCOPE: [what it handles] / [what it must refuse or hand off]
+PERSONALITY & TONE: [e.g., concise, direct, no small talk; or warm, encouraging]
+KNOWLEDGE BOUNDARIES: [what it does NOT know / when to say "I don't have that"]
+INTERACTION STYLE: [how it opens, how it asks for missing info, how it says no]
+SUCCESS SIGNAL: [how the user knows the task is done well]
+
+Keep it under 250 words. Write it so another engineer can read it and predict the agent's behavior in any situation.
+```
+> 📅 2026-08-29
+> 来源：基于 GitHub — awesome-ai-system-prompts（2026）整理
+> 用法：给 Agent 立"人设档案"——使命、边界、语气、知识边界、成功标准一卡说清，行为可预测、可评审。
+
+---
+
+## 178. Agent 置信度标注与幻觉自检
+
+**Prompt：**
+```
+For every factual claim you make in this task, apply confidence labeling:
+
+1. Confidence level per claim: HIGH (verified in provided sources) / MEDIUM (strong inference) / LOW (guess or uncertain)
+2. Before answering, list any claims you're tempted to make that you CANNOT verify from the provided context — mark them as UNVERIFIED and either omit them or state them as speculation
+3. If asked something outside your knowledge, say so explicitly instead of generating a plausible answer
+4. At the end, add a "confidence summary": which parts of your output are safe to act on, which need human verification
+
+Task: [describe task]
+Sources provided: [paste documents/data]
+```
+> 📅 2026-08-29
+> 来源：基于 Musketeers Tech / IBM Agent 提示词 2026 整理
+> 用法：让 Agent 给每个事实性断言打置信度标签，并主动暴露"无法验证的猜想"——把幻觉从"悄悄发生"变成"显式标注"。
+
+---

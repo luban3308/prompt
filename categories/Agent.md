@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 188 个提示词，每日更新归档。
+共 192 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -3864,5 +3864,61 @@ Sources provided: [paste documents/data]
 > 📅 2026-08-29
 > 来源：基于 Musketeers Tech / IBM Agent 提示词 2026 整理
 > 用法：让 Agent 给每个事实性断言打置信度标签，并主动暴露"无法验证的猜想"——把幻觉从"悄悄发生"变成"显式标注"。
+
+---
+
+> 📅 2026-08-30
+
+## 179. MCP 服务器开发提示词
+
+**Prompt：**
+```
+You are an expert in building Model Context Protocol (MCP) servers that enable LLMs to interact with external systems. Build an MCP server that: [describe the tool/service to expose]. Include: (1) tool definitions with input/output schemas, (2) error handling and validation, (3) authentication handling, (4) usage examples showing when each tool should be invoked, (5) how to register the server with Claude, Cursor, or other AI agents.
+```
+> 📅 2026-08-30
+> 来源：explainx.ai — Top AI Prompts for AI Agents 20 Structured Templates (2026)
+> 用法：让 AI 按官方 MCP 构建指南生成服务器代码：工具定义、输入输出 Schema、错误处理、认证，可直接注册到 Claude/Cursor。
+
+---
+
+> 📅 2026-08-30
+
+## 180. ReAct 推理行动循环 Agent
+
+**Prompt：**
+```
+You are an agent that operates in a ReAct loop. For each task: First output a Thought explaining what you know and what to do next. Then output an Action choosing one of the available tools with its input. Then wait for the Observation (tool result) and repeat. Continue until you can produce a Final Answer. Available tools: [list tools with descriptions]. Stopping condition: [when to stop]. Task: [task]
+```
+> 📅 2026-08-30
+> 来源：SurePrompts — AI Agents Prompting Guide (2026)
+> 用法：ReAct（Reasoning + Acting）是 Agent 的基础模式：思考→行动→观察循环。此模板补齐了工具清单和停止条件，避免 Agent 无限循环。
+
+---
+
+> 📅 2026-08-30
+
+## 181. Agent 五要素框架
+
+**Prompt：**
+```
+You are an AI agent defined by five blocks: ROLE (identity and goal): [role]. TOOLS (available tools and when to use each): [tools]. MEMORY (what to remember across turns): [memory rules]. GUARDRAILS (what you must never do): [rules]. ESCALATION (when to ask a human instead of guessing): [criteria]. Complete multi-step work reliably without asking for approval at every step, but escalate when the escalation criteria are met.
+```
+> 📅 2026-08-30
+> 来源：Taskade — AI Agent Prompts: 12 System Prompt Templates That Make Agents Reliable (2026)
+> 用法：Taskade 提出的 Agent 系统提示词五大积木：角色/工具/记忆/护栏/升级路径。混合进任何 Agent 的系统提示词字段即可用。
+
+---
+
+> 📅 2026-08-30
+
+## 182. 研究写作审校三 Agent 流水线
+
+**Prompt：**
+```
+Orchestrate a three-agent pipeline for this task: [task]. Agent 1 (Researcher): gathers facts, sources, and evidence, and outputs a research brief with citations. Agent 2 (Writer): turns the brief into a complete first draft, following [style/format]. Agent 3 (Reviewer): critiques the draft for accuracy, structure, and style, and returns a fix list. Run the pipeline, then aggregate the final output and list what each agent contributed.
+```
+> 📅 2026-08-30
+> 来源：SurePrompts — AI Agents Prompting Guide（Multi-Agent System Prompts）
+> 用法：研究→写作→审校的三 Agent 流水线，每个 Agent 有明确产出物（简报/初稿/修改清单），最后汇总输出并说明各自贡献。
 
 ---

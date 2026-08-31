@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 192 个提示词，每日更新归档。
+共 198 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -3921,4 +3921,81 @@ Orchestrate a three-agent pipeline for this task: [task]. Agent 1 (Researcher): 
 > 来源：SurePrompts — AI Agents Prompting Guide（Multi-Agent System Prompts）
 > 用法：研究→写作→审校的三 Agent 流水线，每个 Agent 有明确产出物（简报/初稿/修改清单），最后汇总输出并说明各自贡献。
 
+---
+## 183. 自主项目助手分阶段推进
+
+> 📅 2026-08-31
+
+**Prompt：**
+```
+Work like an autonomous project assistant. Break this task into stages: [TASK]. For each stage, define the goal, the required files or tools, the expected output, and the validation step. Continue only when the previous stage is complete. Do not skip validation. Report progress after each stage and flag anything you cannot verify.
+```
+> 来源：Simplilearn — Best Claude Prompts to Boost Productivity (2026)
+> 用法：代理式任务执行模板：每个阶段定义目标/所需文件/预期产出/验证步骤，上一阶段未验证通过不进入下一阶段。
+---
+
+## 184. 子代理适用边界
+
+> 📅 2026-08-31
+
+**Prompt：**
+```
+Use subagents only when workstreams are independent. Use them for research, testing, comparison, or codebase exploration. Do not use subagents for simple single-file changes. For this task [TASK], tell me: (1) whether parallel subagents would help, (2) how you would split the work and what each subagent returns, (3) how you recombine their outputs, (4) what you would keep in the main thread.
+```
+> 来源：Simplilearn — 2026 Claude 代理工作流最佳实践
+> 用法：给代理自由但不失控：只有工作流互相独立才用子代理（研究/测试/对比/探索），简单单文件改动留在主线程。
+---
+
+## 185. 研究员-写手-审稿人流水线
+
+> 📅 2026-08-31
+
+**Prompt：**
+```
+Design a multi-agent pipeline for this deliverable: [TASK]. Use a researcher → writer → reviewer pipeline: (1) researcher gathers and verifies facts/sources and returns a structured brief; (2) writer produces the first draft following the brief; (3) reviewer checks accuracy, tone, and requirements, and returns revision notes. Specify the input/output contract of each stage and how errors get sent back for rework.
+```
+> 来源：Claude Directory — 多智能体系统设计（Agent SDK）
+> 用法：三阶段流水线：研究员→写手→审稿人，每阶段定义输入输出契约与返工路径，适合内容生产类 Agent 系统。
+---
+
+## 186. 系统提示词五层结构模板
+
+> 📅 2026-08-31
+
+**Prompt：**
+```
+Write a system prompt for an agent that [task]. Use this five-layer structure:
+1. Identity: who the agent is and what it anchors behavior to (read first).
+2. Security & Safety: non-negotiable rules marked IMPORTANT.
+3. Tone & Style: output format and voice.
+4. Core Workflow: how the work gets done, step by step.
+5. Tools & Constraints: available tools, when to use each, absolute prohibitions (NEVER ...), strong preferences (ALWAYS ...), and suggested workflows.
+Keep each section concise and testable.
+```
+> 来源：Feng Liu — 逆向工程 Claude Code 的 Agent 系统提示词指南
+> 用法：生产级系统提示词的五层骨架：身份→安全→语气→核心流程→工具与约束，每层独立可测，禁止项用 NEVER 显式标注。
+---
+
+## 187. 工具描述优先工程
+
+> 📅 2026-08-31
+
+**Prompt：**
+```
+Here are the tool descriptions for my agent: [paste]. Audit them: (1) which descriptions are vague or could cause the model to misuse the tool, (2) rewrite each vague description with: what it does, when to use it, when NOT to use it, expected input format, and output shape, (3) flag any missing tools the workflow seems to need. A well-written tool description prevents more errors than pages of behavioral instructions.
+```
+> 来源：Zylos Research — Agent 系统提示词工程（指令层级）
+> 用法：工具描述是提示词工程中杠杆最高的表面：审计并重写模糊描述（做什么/何时用/何时不用/输入输出格式），胜过堆行为规则。
+---
+
+## 188. 动态上下文注入 reminder
+
+> 📅 2026-08-31
+
+**Prompt：**
+```
+Design a runtime context injection mechanism for my agent: instead of hardcoding dates, git status, and project rules in the system prompt, inject them as a <system-reminder> block at conversation start with: today's date, current branch, and the project rules file content. Also define reminders for external modifications: when a linter/formatter/manual edit changes a file, notify the model to prevent decisions based on stale content. Provide the exact template.
+```
+> 来源：Feng Liu — Agent 系统提示词逆向工程（动态上下文）
+> 用法：把日期/分支/项目规则做成运行时注入的 <system-reminder>，文件被外部修改时主动提醒模型，避免基于过期内容决策。
 ---

@@ -3999,3 +3999,88 @@ Design a runtime context injection mechanism for my agent: instead of hardcoding
 > 来源：Feng Liu — Agent 系统提示词逆向工程（动态上下文）
 > 用法：把日期/分支/项目规则做成运行时注入的 <system-reminder>，文件被外部修改时主动提醒模型，避免基于过期内容决策。
 ---
+
+## 189. 成功简报草稿批评修订循环
+
+> 📅 2026-09-01
+
+**Prompt：**
+```
+Run this loop for [task]:
+1. Success Brief — define the task, success criteria, audience, and constraints in 5 bullet points
+2. Draft — produce the deliverable
+3. Critique — evaluate the draft against the success criteria; list every failure and weak point honestly
+4. Revise — fix the failures and produce the final version
+Repeat critique+revise until the draft meets all criteria, then show the final output with a summary of what changed.
+```
+> 来源：Reddit r/ThinkingDeeplyAI — Mastering the Claude Ecosystem 2026
+> 用法：Success Brief → Draft → Critique → Revise 四步循环，让 Agent 自己批评自己直到达标。
+---
+
+## 190. Agent控制栈搭建
+
+> 📅 2026-09-01
+
+**Prompt：**
+```
+Design a control stack for my coding agent instead of a giant hand-written prompt:
+1. Project rules file — conventions, style, do/don't for this repo
+2. Reusable skills — repeated tasks packaged as skills [list tasks]
+3. Bounded sub-agents — specialized agents with clear scope and handoff rules
+4. Deterministic tools — tests, linters, formatters that run automatically
+Generate the project rules file and skill definitions for my repo [repo description].
+```
+> 来源：Developers Digest — Why Skills Beat Prompts for Coding Agents 2026
+> 用法：2026 年的胜出模式：用"规则 + 技能 + 子代理 + 确定性工具"的控制栈代替巨型提示词。
+---
+
+## 191. Agent工作流文件化
+
+> 📅 2026-09-01
+
+**Prompt：**
+```
+Turn this workflow into a named, repeatable workflow that lives in the repo:
+Workflow: [describe the task sequence]
+Define: files it touches, prompts/commands to run, human approval gates, verification step, and when NOT to use it.
+Output as a markdown recipe with copy-paste prompt templates.
+```
+> 来源：AYAutomate — 8 Claude Code Workflows 2026
+> 用法：把经验沉淀为仓库里的命名工作流文件，跨会话、跨团队复用，而不是只存在脑子里。
+---
+
+## 192. 研究规划分离指令
+
+> 📅 2026-09-01
+
+**Prompt：**
+```
+Separate research and planning from implementation for [task]:
+Phase 1 (research): read relevant files, map constraints, write a plan. Do NOT edit code.
+Phase 2 (plan approval): present the plan for my review.
+Phase 3 (implementation): only after approval, implement.
+Phase 4 (verification): run tests and summarize.
+This prevents solving the wrong problem.
+```
+> 来源：SSOJet — 25 Best Prompts for AI Coding Agents 2026（Anthropic 建议）
+> 用法：把"研究规划"和"实施"分离，是 Anthropic 官方建议，防止 Agent 一开始就做错方向。
+---
+
+## 193. 子代理边界定义
+
+> 📅 2026-09-01
+
+**Prompt：**
+```
+Define a bounded sub-agent for [scope/domain]:
+1. Role and responsibility (one paragraph)
+2. Files/modules it may touch
+3. Tools it may use (and when)
+4. Inputs it receives and output format it must produce
+5. Handoff criteria — when to pass work to another agent or the user
+6. Escalation rules — what to do when something is outside its scope
+Keep the boundary explicit so sub-agents don't collide or overstep.
+```
+> 来源：Developers Digest / AYAutomate — Multi-Agent 2026
+> 用法：多 Agent 协作时给每个子代理划清边界：能碰什么、用什么工具、何时交接、越界怎么办。
+---

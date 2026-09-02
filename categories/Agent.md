@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 198 个提示词，每日更新归档。
+共 196 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -4083,4 +4083,94 @@ Keep the boundary explicit so sub-agents don't collide or overstep.
 ```
 > 来源：Developers Digest / AYAutomate — Multi-Agent 2026
 > 用法：多 Agent 协作时给每个子代理划清边界：能碰什么、用什么工具、何时交接、越界怎么办。
+---
+
+## 194. Agent 角色边界定义器
+
+> 📅 2026-09-02
+
+**Prompt：**
+```
+Write a production-grade system prompt for an AI agent with a precisely bounded role. Agent purpose: [describe what it must do]. Organization/domain: [describe]. Output a system prompt containing:
+1. ROLE: one crisp sentence defining what the agent IS, followed by what it DOES NOT do (explicit negative scope, e.g. "You do NOT provide financial advice, modify system data, or answer benefits questions")
+2. SCOPE & PRIORITIES: ranked list of task types it handles; what to refuse and how to refuse politely
+3. DECISION RULES: when to act autonomously vs. when to ask the user vs. when to escalate (with concrete triggers)
+4. BEHAVIOR UNDER UNCERTAINTY: what to do when data is missing, conflicting, or below a confidence threshold
+5. ALWAYS / NEVER sections (non-contradictory), plus a short test conversation showing correct boundary behavior
+Rules: never embed PII in the prompt; keep it under ~600 words; plain language an LLM follows reliably.
+```
+> 来源：Oracle Fusion (AI Agent Studio best practices) / Infobip — agent prompt writing guide
+> 用法：生成生产级 Agent 系统提示词：正向角色+负向边界双定义、决策规则、不确定时的行为，以及无矛盾的 ALWAYS/NEVER 清单。
+---
+
+## 195. Agent 提示词矛盾扫描器
+
+> 📅 2026-09-02
+
+**Prompt：**
+```
+Review this agent system prompt for contradictions and failure modes: [paste prompt]. Check specifically:
+1. ALWAYS/NEVER conflicts: pairs of rules that paralyze the agent or force it to reveal internals (e.g. "share all information" + "never share internal details")
+2. Capability overclaiming: phrasing that lets the agent claim tools/abilities it doesn't have
+3. Ambiguity: rules that are unclear to a literal reader; rewrite each in testable terms
+4. Priority gaps: what happens when two rules collide (which wins?) — add explicit precedence
+5. Prompt-injection surface: instructions that could be overridden by user/content input; add hardening language
+Output: a table of issues (severity, location, fix), then the full corrected prompt.
+```
+> 来源：AWS Connect admin guide — prompt engineering best practices for AI agents
+> 用法：给现有 Agent 提示词做体检：找出 ALWAYS/NEVER 自相矛盾、能力夸大、规则冲突无优先级、提示注入面，输出修正版全文。
+---
+
+## 196. 多 Agent 编排者提示词
+
+> 📅 2026-09-02
+
+**Prompt：**
+```
+Act as an expert in multi-agent system design. My task pipeline: [describe the end-to-end job, e.g. "research a prospect → draft outreach → review for compliance → send"]. Design:
+1. An ORCHESTRATOR system prompt: role, how it decomposes the goal into sub-tasks, when it delegates vs. does work itself, and how it decides a sub-agent's output is acceptable (quality gate)
+2. For each sub-agent (max 4): name, bounded role definition, its input contract and output schema, and the exact context to hand it (no more, no less)
+3. Hand-off protocol: what the orchestrator passes between steps and what it never passes (raw PII, secrets)
+4. Failure & escalation: per-step fallback, retry policy, and when to stop and ask a human
+5. An evaluation loop: one metric per step and a 3-case test set to run before shipping
+Keep prompts concise enough to run within context limits.
+```
+> 来源：Medium Online Inference — Best practices for building multi-agent systems / AWS model-driven agents
+> 用法：把端到端任务拆成「编排者+子 Agent」架构：每个子 Agent 有输入契约与输出 schema，定义交接协议、质量门禁与失败升级路径。
+---
+
+## 197. Agent 失败降级策略生成器
+
+> 📅 2026-09-02
+
+**Prompt：**
+```
+Design the failure-handling section of an agent prompt for: [describe agent: task, tools, environment]. Generate:
+1. Confidence thresholds: what confidence levels mean and the action at each (proceed / proceed with caveat / ask user / escalate)
+2. Missing-data protocol: step-by-step behavior when a required input is absent (ask once → try alternative source → escalate)
+3. Tool-failure protocol: what to do when a tool errors, times out, or returns garbage (retry with backoff, switch tool, degrade gracefully, report)
+4. Escalation rules: exactly when the agent must stop and hand over to a human, with what summary format
+5. A "graceful degradation" ladder: how the agent delivers partial value when full success is impossible
+Output as a copy-pasteable section to append to the agent's system prompt.
+```
+> 来源：Infobip docs — Write prompts for AI agents (confidence thresholds & escalation)
+> 用法：给 Agent 写「应急手册」：置信度分级行动、数据缺失协议、工具故障降级阶梯、明确的人工升级触发条件与交接摘要格式。
+---
+
+## 198. 客服 Agent 语音友好化改写
+
+> 📅 2026-09-02
+
+**Prompt：**
+```
+Rewrite this agent response policy for voice/chat customer service to sound human and follow contact-center best practices: [paste current rules or transcripts]. Deliver a rewritten policy where:
+1. Responses are voice-friendly: short sentences, conversational connectors, no bullet-speak read aloud, no markdown symbols in spoken output
+2. Greeting rules: greet once at conversation start; later greetings are polite but brief; never re-introduce repeatedly
+3. Transparency rules: be transparent about account status/policy/next steps, but NEVER reveal internal system details, tool names, or backend processes
+4. Emotion handling: scripts for frustrated, confused, or repeat customers (acknowledge → clarify → act → confirm)
+5. Escalation phrasing: natural sentences to hand off to a human agent without making the customer repeat everything
+Output: the full rewritten policy + 3 example dialogues (normal, frustrated, off-topic).
+```
+> 来源：AWS Connect admin guide — agentic self-service prompt best practices (voice-friendly)
+> 用法：把客服 Agent 的应答策略改写成「念出来也自然」的语音友好版：只在开头问候一次、透明但不泄露内部机制、含情绪化客户处理话术。
 ---

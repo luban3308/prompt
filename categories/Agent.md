@@ -1,6 +1,6 @@
 # Agent 类提示词
 
-共 196 个提示词，每日更新归档。
+共 201 个提示词，每日更新归档。
 
 ---
 ## 1. AI Agent 系统提示词编写
@@ -4173,4 +4173,112 @@ Output: the full rewritten policy + 3 example dialogues (normal, frustrated, off
 ```
 > 来源：AWS Connect admin guide — agentic self-service prompt best practices (voice-friendly)
 > 用法：把客服 Agent 的应答策略改写成「念出来也自然」的语音友好版：只在开头问候一次、透明但不泄露内部机制、含情绪化客户处理话术。
+---
+
+## 199. Agent 工具配备决策器
+
+
+> 📅 2026-09-03
+
+
+**Prompt：**
+```
+Act as an agent architect. I'm building an AI agent for [task/use case: e.g. "customer support triage", "research assistant", "code maintenance"]. Environment/constraints: [model, budget per task, latency needs, what the agent can already do natively]. Decide its tool set:
+1. For each candidate tool type — web search, file read/write, code execution/sandbox, database/SQL, email/messaging send, browser automation, image generation, memory store, calendar — answer: does this task NEED it, or can the model's native knowledge/context handle it? (Every tool adds failure modes and cost)
+2. Justify each YES: what specific capability gap it fills, an example task it enables, and the risk it introduces (hallucinated results, destructive actions, data leakage)
+3. Minimal viable set: the smallest tool combination that covers 90% of tasks — resist tool creep
+4. Permission boundaries: which tools should require human approval vs. run autonomously, given blast radius
+5. Failure handling: what the agent should do when a tool errors (retry? fall back to native? ask human?)
+6. A tool-proving plan: 3 test tasks per tool to run before trusting it in production
+Output a decision table: tool | needed? | why | risk | permission level.
+```
+
+> 来源：Anthropic — Claude prompting best practices (agent harness, tools, verification) 2026
+> 用法：给 Agent 配工具前先问「原生能力真的不够吗」：每个工具都要有明确补的能力缺口、引入的风险和权限级别，保持最小可用集。
+---
+
+## 200. Agent 人机交接协议生成器
+
+
+> 📅 2026-09-03
+
+
+**Prompt：**
+```
+Act as a human-agent workflow designer. My agent autonomously handles [task type]. When it needs a human, the current behavior is [describe: silent failure, confusing handoff, or asking too often]. Design a handoff protocol:
+1. Decision rules: the exact conditions when the agent MUST stop and hand off (low confidence, high blast radius, value judgment, new situation, user emotion detected) vs. when it should proceed — written as checkable criteria, not vibes
+2. Handoff package format: what the human receives every time — what was tried, what was found, the specific decision needed, and the agent's recommendation with reasoning (so the human decides in seconds, not minutes)
+3. Escalation ladder: levels (auto-handle → pause & ask → stop & alert) mapped to risk levels with examples
+4. Context preservation: what context to include so the human doesn't repeat work, and what to summarize vs. quote verbatim
+5. Post-handoff learning: how the human's decision should update the agent's future behavior (rule update? example added to memory?)
+6. Guardrails against both failure modes: handing off too often (agent becomes a burden) and too rarely (agent runs wild) — with a weekly metric for each
+Output the protocol as a prompt section the agent runs at the end of every task.
+```
+
+> 来源：Anthropic platform docs / Mindstudio — agentic workflow patterns 2026 (human-in-the-loop)
+> 用法：给 Agent 写清「何时必须交人、交什么、怎么升级」：低置信/高影响/新情况就停，交接包让人类几秒内能决策，并让决策回流改进 Agent。
+---
+
+## 201. Agent 事实核查循环提示
+
+
+> 📅 2026-09-03
+
+
+**Prompt：**
+```
+Act as a verification-first agent. Instructions for every response you produce using tools (search, database, files):
+1. CLAIM-EXTRACT: Before answering, list the factual claims your answer will depend on
+2. VERIFY: For each claim, check it against a tool result or the provided source — tag each as: verified-by-source / verified-by-tool-output / inferred (reasoning, not fact) / unverifiable
+3. CITE: Attach the source or tool output reference to every verified claim; when asked for numbers, quotes, or status, quote the exact source text rather than paraphrasing
+4. CONFLICT-HANDLING: If tool results contradict each other or your training knowledge, surface the conflict explicitly and explain which you trust and why (recency, source authority, specificity) — never silently pick one
+5. UNCERTAINTY-RULE: If a claim is unverifiable with available tools, say "unverifiable" and offer what WOULD verify it (a specific search, a document, a person) — do not fill gaps with plausible-sounding content
+6. SELF-CHECK: Before finalizing, re-read your answer and flag any sentence that asserts something you did not verify
+Apply this loop to every tool-using turn, even when the user doesn't ask for it.
+```
+
+> 来源：Anthropic — Claude prompting best practices (verification tools for autonomous tasks) 2026
+> 用法：把「先抽取断言→逐条核对→标注可信度→冲突显式处理→不可验证就明说」写进 Agent 系统提示，从机制上压住幻觉。
+---
+
+## 202. Agent 记忆架构设计器
+
+
+> 📅 2026-09-03
+
+
+**Prompt：**
+```
+Act as an agent memory architect. My agent: [use case, e.g. "personal research assistant used weekly"]. User interactions: [session-based or ongoing relationship, how often, what changes between sessions]. Design its memory system:
+1. Memory types needed: episodic (what happened in past sessions/tasks), semantic (facts learned about the user/domain), procedural (preferred methods, recurring instructions) — for MY use case, which matter and which are overkill?
+2. What to store vs. forget: rules for deciding a fact is worth persisting (repeated? affects future output? user stated it explicitly?) and a decay policy for stale info
+3. Storage format: key-value profile vs. notes vs. structured logs; where summaries replace raw history
+4. Retrieval timing: when the agent should check memory (task start? when context seems missing?) and how to avoid acting on outdated memory
+5. Conflict handling: user says X today, memory says Y from last month — which wins, and when to ask
+6. Privacy & correction: how the user reviews/deletes memory, and a rule that the user's latest explicit statement always overrides stored preferences
+7. A compact memory-update prompt the agent runs at session end: "what did I learn that changes future behavior?"
+Output: the memory schema + the update prompt.
+```
+
+> 来源：Mindstudio / Claude ecosystem handbook 2026 — agent memory & context design
+> 用法：按「情景/语义/程序」三类决定记什么、忘什么、何时调取、冲突时谁赢，并附会话结束时的记忆更新提示词。
+---
+
+## 203. 并行拆分合并执行指令
+
+
+> 📅 2026-09-03
+
+
+**Prompt：**
+```
+Act as a batch-processing orchestrator. Task: [describe a large batch job: e.g. "analyze 200 customer feedback items", "review 50 pull requests", "generate summaries for 30 documents"]. Current context limits prevent doing it in one pass. Execute with split-and-merge:
+PHASE 1 — SPLIT: Divide the work into independent chunks of [size: ~10-15 items each]. For each chunk define: exact input slice, the per-item output format (identical schema for every item), and how to number items so results can be reassembled.
+PHASE 2 — PROCESS: Work chunk by chunk in separate passes. At the start of each pass, state "CHUNK [n] OF [m], items [a-b]". Never carry state between chunks except the shared output schema.
+PHASE 3 — MERGE: After all chunks are done, produce one consolidated deliverable: deduplicate across chunks, reconcile borderline cases (flag them for the user), and produce a summary of patterns across the whole batch — plus a per-item index so anything can be located.
+RULES: If a chunk reveals an ambiguity that affects the schema, STOP and report it before continuing (do not silently change the format mid-batch). Track progress so you can resume from the last completed chunk if interrupted.
+```
+
+> 来源：Mindstudio — Claude Code agentic workflow patterns (split-and-merge, 2026)
+> 用法：大批量任务用「拆分—逐块处理—合并」三段式：统一输出 schema、块间零状态、歧义即停，可断点续跑不丢进度。
 ---
